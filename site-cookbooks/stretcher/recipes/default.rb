@@ -29,3 +29,5 @@ execute 'deploy binary' do
   EOC
   not_if { File.exist?("#{deploy_path}/#{binary_file}") }
 end
+
+include_recipe 'stretcher::example'

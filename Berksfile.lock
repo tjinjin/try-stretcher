@@ -1,0 +1,5 @@
+DEPENDENCIES
+  golang
+
+GRAPH
+  golang (1.7.0)
