@@ -1,0 +1,15 @@
+{
+  "server": true,
+  "node_name": "<%= @node_name %>",
+  "data_dir": "/tmp/consul",
+  "bind_addr": "<%= @bind_addr %>",
+  "client_addr": "0.0.0.0",
+  "bootstrap_expect": 3,
+  "watches": [
+    {
+      "type": "event",
+      "name": "example_deploy",
+      "handler": "stretcher"
+    }
+  ]
+}
