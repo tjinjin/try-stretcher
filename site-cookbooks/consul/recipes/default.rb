@@ -10,3 +10,4 @@ include_recipe 'unzip'
 
 include_recipe 'consul::install'
 include_recipe 'consul::setting'
+include_recipe 'consul::watch'
