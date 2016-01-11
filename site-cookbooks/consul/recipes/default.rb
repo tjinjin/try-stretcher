@@ -29,7 +29,28 @@ execute 'deploy binary' do
 end
 
 cookbook_file '/etc/systemd/system/consul.service' do
-  notifies :run 'execute[systemd-daemon-reload]'
+  notifies :run, 'execute[systemd-daemon-reload]',:immediately
 end
 
 directory '/etc/consul.d'
+
+template '/etc/consul.d/server.json' do
+  variables(
+    bind_addr: node['automatic']['ipaddress'],
+    node_name: node['automatic']['ipaddress']
+  )
+  notifies :start, 'service[consul]'
+  notifies :reload, 'service[consul]'
+end
+
+service 'consul' do
+  action [:enable]
+  supports start: true, reload: true
+end
+
+execute 'systemd-daemon-reload' do
+  command <<-EOC
+    systemctl daemon-reload
+  EOC
+  action :nothing
+end
