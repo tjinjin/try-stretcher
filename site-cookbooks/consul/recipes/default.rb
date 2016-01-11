@@ -28,4 +28,8 @@ execute 'deploy binary' do
   not_if { File.exist?("#{deploy_path}/#{binary_file}") }
 end
 
+cookbook_file '/etc/systemd/system/consul.service' do
+  notifies :run 'execute[systemd-daemon-reload]'
+end
+
 directory '/etc/consul.d'
