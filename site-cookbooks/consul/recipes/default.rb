@@ -7,6 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 include_recipe 'unzip'
+include_recipe 'stretcher'
 
 include_recipe 'consul::install'
 include_recipe 'consul::setting'

@@ -1,15 +1,17 @@
 #
-# Cookbook Name:: stretcher
-# Recipe:: example
+# Cookbook Name:: deploy
+# Recipe:: default
 #
 # Copyright 2016, YOUR_COMPANY_NAME
 #
 # All rights reserved - Do Not Redistribute
 #
+#
+include_recipe 'consul'
+include_recipe 'stretcher'
+
 package 'git'
 package 'golang'
-
-include_recipe 'consul'
 
 git "/tmp/stretcher" do
   user 'vagrant'
