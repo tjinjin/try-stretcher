@@ -15,3 +15,12 @@ git "/tmp/stretcher" do
   repository "https://github.com/fujiwara/stretcher.git"
   action :sync
 end
+
+execute 'initialize sample' do
+  command <<-EOC
+    cd /tmp/stretcher/examples
+    sed -i 's/^\(consul event\)/#\1/g' prepare.sh
+    ./prepare.sh
+  EOC
+  not_if { File.exist?('/tmp/stretcher/examples/example.tar.gz')}
+end
