@@ -1,0 +1,15 @@
+[Unit]
+Description=unicorn
+
+[Service]
+User=app
+Group=app
+EnvironmentFile=-/etc/sysconfig/unicorn
+WorkingDirectory=/var/www/<%= @app_name %>
+PIDFile=/var/www/<%= @app_name %>/shared/pids
+ExecStart=/usr/local/bin/bundle exec unicorn -c config/unicorn/<%= @rails_env %>.rb
+ExecReload=/bin/kill -USR2 $MAINPID
+ExecStop=/bin/kill -QUIT $MAINPID
+KillSignal=SIGINT
+
+[Install]
