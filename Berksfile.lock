@@ -1,5 +1,9 @@
 DEPENDENCIES
   golang
+  yum-epel
 
 GRAPH
   golang (1.7.0)
+  yum (3.9.0)
+  yum-epel (0.6.5)
+    yum (~> 3.2)

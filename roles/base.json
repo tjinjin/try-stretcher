@@ -7,7 +7,8 @@
         "recipe[consul]",
         "recipe[dev-util]",
         "recipe[stretcher]",
-        "recipe[deploy]"
+        "recipe[timezone]",
+        "recipe[chrony]"
     ],
 
     "override_attributes": {

@@ -11,5 +11,6 @@
     ],
 
     "override_attributes": {
+      "unicorn": "my_app_name"
     }
 }
