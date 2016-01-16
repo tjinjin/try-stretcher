@@ -8,10 +8,11 @@
 #
 include_recipe 'user'
 
-%w(/var /var/www).each do |dir|
+%w(/var /var/www /var/www/shared /var/www/current).each do |dir|
   directory dir  do
     mode '0755'
     owner 'app'
+    group 'app'
   end
 end
 
