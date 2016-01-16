@@ -1,0 +1,12 @@
+{
+    "name": "stretcher",
+    "description": "stretcher role",
+    "json_class": "Chef::Role",
+
+    "run_list": [
+      "recipe[awscli]"
+    ],
+
+    "override_attributes": {
+    }
+}
