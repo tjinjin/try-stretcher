@@ -1,6 +1,6 @@
 template '/etc/systemd/system/consul-watch.service' do
   variables(
-    role: "example_deploy"
+    role: node['consul']['role']
   )
   notifies :run, 'execute[systemd-daemon-reload]',:immediately
 end
