@@ -1,0 +1,13 @@
+/var/www/my_app_name/shared/log/*.log {
+    daily
+    missingok
+    dateext
+    ifempty
+    sharedscripts
+    rotate 7
+    su app app
+    postrotate
+      pid=/var/www/my_app_name/current/tmp/pids/unicorn.pid
+      test -s $pid && kill -USR1 "$(cat $pid)"
+    endscript
+}
