@@ -20,3 +20,7 @@ execute 'systemd-daemon-reload' do
   EOC
   action :nothing
 end
+
+service 'unicorn' do
+  action [:enable]
+end
