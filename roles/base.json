@@ -6,8 +6,7 @@
     "run_list": [
         "recipe[consul]",
         "recipe[dev-util]",
-        "recipe[stretcher]",
-        "recipe[deploy]"
+        "recipe[stretcher]"
     ],
 
     "override_attributes": {
