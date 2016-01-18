@@ -11,6 +11,8 @@
     ],
 
     "override_attributes": {
-      "unicorn": "my_app_name"
+      "unicorn": {
+        "rails_env": "development"
+      }
     }
 }
