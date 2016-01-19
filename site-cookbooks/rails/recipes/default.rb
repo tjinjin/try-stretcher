@@ -8,7 +8,9 @@
 #
 include_recipe 'user'
 
-%w(/var /var/www /var/www/shared /var/www/shared/log /var/www/shared/pids /var/www/shared/data /var/www/releases).each do |dir|
+app_name = node[:rails][:app_name]
+
+%W(/var/www /var/www/#{app_name} /var/www/#{app_name}/shared /var/www/#{app_name}/shared/log /var/www/#{app_name}/shared/pids /var/www/#{app_name}/shared/data /var/www/#{app_name}/releases).each do |dir|
   directory dir  do
     mode '0755'
     owner 'app'

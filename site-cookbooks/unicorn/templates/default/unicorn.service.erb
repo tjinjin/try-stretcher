@@ -4,8 +4,8 @@ Description=unicorn
 [Service]
 User=app
 Group=app
-WorkingDirectory=/var/www/current
-PIDFile=/var/www/current/tmp/pids/unicorn.pids
+WorkingDirectory=/var/www/<%= @app_name %>/current
+PIDFile=/var/www/<%= @app_name %>/current/tmp/pids/unicorn.pids
 ExecStart=/usr/local/bin/bundle exec unicorn -c config/unicorn/<%= @rails_env %>.rb -E <%= @rails_env %>
 ExecReload=/bin/kill -USR2 $MAINPID
 ExecStop=/bin/kill -QUIT $MAINPID
