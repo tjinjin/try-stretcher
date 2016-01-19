@@ -1,6 +1,6 @@
 {
-    "name": "base",
-    "description": "base role",
+    "name": "rails",
+    "description": "rails role",
     "json_class": "Chef::Role",
 
     "run_list": [
@@ -13,6 +13,9 @@
     "override_attributes": {
       "unicorn": {
         "rails_env": "development"
+      },
+      "rails": {
+        "app_name": "stretcher_app"
       }
     }
 }

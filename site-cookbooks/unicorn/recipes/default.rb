@@ -8,7 +8,8 @@
 #
 template '/etc/systemd/system/unicorn.service' do
   variables(
-    rails_env: node['unicorn']['rails_env']
+    rails_env: node['unicorn']['rails_env'],
+    app_name: node['rails']['app_name']
   )
   notifies :run, 'execute[systemd-daemon-reload]', :immediately
 end
