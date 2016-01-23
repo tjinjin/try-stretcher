@@ -27,7 +27,7 @@ resource "aws_launch_configuration" "blue" {
   user_data = "${file("./boot-blue.sh")}"
 
   root_block_device {
-    delete_on_termination = "false"
+    delete_on_termination = true
   }
 
   lifecycle {
@@ -54,7 +54,7 @@ resource "aws_launch_configuration" "green" {
   user_data = "${file("./boot-green.sh")}"
 
   root_block_device {
-    delete_on_termination = "false"
+    delete_on_termination = true
   }
 
   lifecycle {
