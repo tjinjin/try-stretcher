@@ -26,6 +26,10 @@ resource "aws_launch_configuration" "blue" {
   security_groups = ["${aws_security_group.example.id}"]
   user_data = "${file("./boot-blue.sh")}"
 
+  root_block_device {
+    delete_on_termination = "false"
+  }
+
   lifecycle {
     create_before_destroy = true
   }
@@ -48,6 +52,10 @@ resource "aws_launch_configuration" "green" {
   key_name = "tjinjin-terraform"
   security_groups = ["${aws_security_group.example.id}"]
   user_data = "${file("./boot-green.sh")}"
+
+  root_block_device {
+    delete_on_termination = "false"
+  }
 
   lifecycle {
     create_before_destroy = true
