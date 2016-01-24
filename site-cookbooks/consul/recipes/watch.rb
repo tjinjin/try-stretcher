@@ -5,6 +5,13 @@ template '/etc/systemd/system/consul-watch.service' do
   notifies :run, 'execute[systemd-daemon-reload]',:immediately
 end
 
+template '/etc/systemd/system/consul-watch-chef.service' do
+  variables(
+    role: node['consul']['chef']['role']
+  )
+  notifies :run, 'execute[systemd-daemon-reload]',:immediately
+end
+
 execute 'systemd-daemon-reload' do
   command <<-EOC
     systemctl daemon-reload
@@ -13,6 +20,11 @@ execute 'systemd-daemon-reload' do
 end
 
 service 'consul-watch' do
+  action [:enable, :start]
+  supports start: true, reload: true
+end
+
+service 'consul-watch-chef' do
   action [:enable, :start]
   supports start: true, reload: true
 end

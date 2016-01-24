@@ -1,0 +1,21 @@
+src: <%= src %>
+checksum: <%= checksum %>
+dest: <%= fetch(:deploy_to) %>/releases/<%= env.now %>
+commands:
+  pre:
+    <% hooks["pre"].each do |c| %>
+    - <%= c %>
+    <% end %>
+  post:
+    <% hooks["post"].each do |c| %>
+    - <%= c %>
+    <% end %>
+  success:
+    <% hooks["success"].each do |c| %>
+    - <%= c %>
+    <% end %>
+  failure:
+    <% hooks["failure"].each do |c| %>
+    - <%= c %>
+    <% end %>
+excludes:
