@@ -141,7 +141,7 @@ namespace :stretcher do
   task :kick_stretcher do
     fetch(:deploy_roles).split(',').each do |target_role|
       on application_builder_roles do
-        opts = ["-name deploy_#{target_role}_#{fetch(:stage)}"]
+        opts = ["-name deploy_#{target_role}_server_#{fetch(:stage)}"]
         opts << "-node #{ENV['TARGET_HOSTS']}" if ENV['TARGET_HOSTS']
         opts << "#{fetch(:manifest_path)}/manifest_#{target_role}_server_#{fetch(:stage)}.yml"
         execute :consul, :event, *opts
