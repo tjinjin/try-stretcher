@@ -1,0 +1,11 @@
+default: &default
+  pre:
+    -
+  success:
+    -
+  failure:
+    - cat >> /tmp/failure
+web:
+  <<: *default
+  post:
+    - bundle exec chef-solo
