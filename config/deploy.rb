@@ -2,7 +2,7 @@ ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 role :build, ['192.168.34.42'], :no_release => true
 set :application, 'try-stretcher'
-set :deploy_to, '~/chef-solo/try-stretcher'
+set :deploy_to, '/root/chef-solo/try-stretcher'
 set :deploy_roles, 'web'
 set :stretcher_hooks, 'config/stretcher.yml.erb'
 set :local_tarball_name, 'rails-applicaiton.tar.gz'
