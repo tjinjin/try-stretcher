@@ -1,2 +1,4 @@
 /cookbooks/
 /aws/
+terraform.tfstate
+terraform.tfstate.backup
