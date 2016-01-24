@@ -1,3 +1,5 @@
+ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+
 role :build, ['192.168.34.42'], :no_release => true
 set :application, 'try-stretcher'
 set :deploy_to, '~/chef-solo/try-stretcher'
