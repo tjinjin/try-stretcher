@@ -19,9 +19,9 @@ resource "aws_elb" "example" {
 }
 
 resource "aws_launch_configuration" "blue" {
-  image_id = "${var.ami}"
-  name_prefix = "blue-"
-  instance_type = "${var.instance_type}"
+  image_id = "${var.blue_ami}"
+  name = "blue-launch_configration"
+  instance_type = "${var.blue_instance_type}"
   key_name = "tjinjin-terraform"
   security_groups = ["${aws_security_group.example.id}"]
   user_data = "${file("./boot-blue.sh")}"
@@ -30,9 +30,6 @@ resource "aws_launch_configuration" "blue" {
     delete_on_termination = true
   }
 
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 resource "aws_autoscaling_group" "blue" {
@@ -46,9 +43,9 @@ resource "aws_autoscaling_group" "blue" {
 }
 
 resource "aws_launch_configuration" "green" {
-  image_id = "${var.ami}"
-  name_prefix = "green-"
-  instance_type = "${var.instance_type}"
+  image_id = "${var.green_ami}"
+  name = "green-launch_configration"
+  instance_type = "${var.green_instance_type}"
   key_name = "tjinjin-terraform"
   security_groups = ["${aws_security_group.example.id}"]
   user_data = "${file("./boot-green.sh")}"
@@ -57,9 +54,6 @@ resource "aws_launch_configuration" "green" {
     delete_on_termination = true
   }
 
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 resource "aws_autoscaling_group" "green" {
