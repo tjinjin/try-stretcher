@@ -1,10 +1,8 @@
 {
   "run_list": [
     "role[base]",
-    "role[rails]"
+    "role[rails]",
+    "role[stretcher]"
 
-  ],
-  "automatic": {
-    "ipaddress": "192.168.34.44"
-  }
+  ]
 }
