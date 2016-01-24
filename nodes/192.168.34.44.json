@@ -1,7 +1,8 @@
 {
   "run_list": [
     "role[base]",
-    "role[rails]"
+    "role[rails]",
+    "role[stretcher]"
 
   ],
   "automatic": {
