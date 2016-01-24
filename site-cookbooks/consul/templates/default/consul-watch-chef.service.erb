@@ -1,0 +1,14 @@
+[Unit]
+Description=consul-watch agent
+Requires=consul.service
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/consul-watch-chef
+Environment=GOMAXPROCS=2
+Restart=on-failure
+ExecStart=/usr/local/bin/consul watch -type event -name <%= @role %> stretcher
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
