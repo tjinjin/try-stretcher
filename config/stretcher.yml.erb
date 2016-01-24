@@ -8,4 +8,4 @@ default: &default
 web:
   <<: *default
   post:
-    - bundle exec chef-solo
+    - bundle exec chef-solo -c .chef/kniferb -j nodes/aws_<%= fetch(:stage) %>.json
