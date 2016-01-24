@@ -3,9 +3,5 @@
     "role[base]",
     "role[rails]",
     "role[stretcher]"
-
-  ],
-  "automatic": {
-    "ipaddress": "192.168.34.42"
-  }
+  ]
 }
