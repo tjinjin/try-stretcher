@@ -1,0 +1,12 @@
+{
+  "name": "staging",
+  "description":"This is staging environment",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+
+  "default_attributes": {
+    "consul": {
+     "leader_addr": "172.16.0.2"
+    }
+  }
+}

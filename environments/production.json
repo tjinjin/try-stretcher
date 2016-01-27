@@ -1,0 +1,12 @@
+{
+  "name": "production",
+  "description":"This is production environment",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+
+  "default_attributes": {
+    "consul": {
+     "leader_addr": "10.0.0.2"
+    }
+  }
+}
