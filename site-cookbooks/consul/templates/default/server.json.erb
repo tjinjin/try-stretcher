@@ -1,8 +1,10 @@
 {
   "server": true,
-  "node_name": "<%= @node_name %>",
   "data_dir": "/tmp/consul",
+<% if @environment == 'development' %>
+  "node_name": "<%= @node_name %>",
   "bind_addr": "<%= @bind_addr %>",
+<% end %>
   "client_addr": "0.0.0.0",
   "bootstrap_expect": 3,
   "start_join": "192.168.34.42",
