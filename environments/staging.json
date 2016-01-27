@@ -5,6 +5,8 @@
   "json_class": "Chef::Environment",
 
   "default_attributes": {
+    "consul": {
+     "leader_addr": "172.16.0.2"
     }
-
+  }
 }
