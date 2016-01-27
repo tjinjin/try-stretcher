@@ -1,0 +1,10 @@
+{
+  "name": "development",
+  "description":"This is development environment",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+
+  "default_attributes": {
+    }
+
+}
