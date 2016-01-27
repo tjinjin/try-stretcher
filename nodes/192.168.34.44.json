@@ -1,4 +1,8 @@
 {
+  "consul": {
+    "ipaddress": "192.168.34.44"
+  },
+
   "run_list": [
     "role[base]",
     "role[rails]",
