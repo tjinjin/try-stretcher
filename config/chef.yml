@@ -1,0 +1,15 @@
+src: file:///home/vagrant/chef.tgz
+checksum: 35dc42d23d8d18c3ab86f03d18ab16f0
+dest: /home/vagrant/releases
+commands:
+  pre:
+    - echo 'staring deploy'
+  post:
+    - sudo chef-solo -c /home/vagrant/releases/solo.rb -j /home/vagrant/releases/nodes/192.168.34.42.json
+  success:
+    - echo 'deploy success'
+  failure:
+    - echo 'deploy failed!!'
+excludes:
+  - "*.pid"
+  - "*.socket"
