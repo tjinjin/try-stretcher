@@ -5,7 +5,7 @@ Description=unicorn
 User=app
 Group=app
 WorkingDirectory=/var/www/<%= @app_name %>/current
-ExecStart=/usr/local/bin/bundle exec unicorn -c config/unicorn/<%= @rails_env %>.rb -E deployment
+ExecStart=/usr/local/bin/bundle exec unicorn -c config/unicorn/<%= @rails_env %>.rb -E <%= @rails_env %>
 ExecReload=/bin/kill -USR2 $MAINPID
 
 [Install]
