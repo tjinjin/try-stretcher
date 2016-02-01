@@ -8,6 +8,7 @@ WorkingDirectory=/var/www/<%= @app_name %>/current
 PIDFile=/var/www/stretcher_app/current/tmp/pids/unicorn.pid
 ExecStart=/usr/local/bin/bundle exec unicorn -c config/unicorn/<%= @rails_env %>.rb -E <%= @rails_env %>
 ExecReload=/bin/kill -USR2 $MAINPID
+KillSignal=SIGINT
 
 [Install]
 WantedBy=multi-user.target
