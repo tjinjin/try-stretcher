@@ -1,0 +1,14 @@
+default: &default
+  pre:
+    -
+  success:
+    -
+  failure:
+    - cat >> /tmp/failure
+web:
+  <<: *default
+  post:
+		- chef-solo -c /var/tmp/current/try-stretcher/solo.rb -j /var/tmp/current/try-stretcher/nodes/192.168.34.42.json
+batch:
+  <<: *default
+  post:
