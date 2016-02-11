@@ -1,9 +1,3 @@
-PATH
-  remote: /Users/jin/src/github.com/tjinjin/rake-stretcher-chef
-  specs:
-    rake-stretcher-chef (0.1.0)
-      rake-stretcher (~> 0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -143,6 +137,8 @@ GEM
     rake (10.5.0)
     rake-stretcher (0.1.3)
       rake (~> 10.0)
+    rake-stretcher-chef (0.1.0)
+      rake-stretcher (~> 0.1)
     retryable (2.0.3)
     ridley (4.4.2)
       addressable
@@ -217,7 +213,7 @@ PLATFORMS
 DEPENDENCIES
   berkshelf
   knife-solo
-  rake-stretcher-chef!
+  rake-stretcher-chef
 
 BUNDLED WITH
    1.10.6
