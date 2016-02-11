@@ -1,0 +1,18 @@
+default: &default
+  pre:
+    - rm -f <%= deploy_to %>/current
+    - ln -s <%= deploy_to %>/releases/<%= time_now %> <%= deploy_to %>/current
+  post:
+    -
+  success:
+    -
+  failure:
+    - cat >> /tmp/failure
+web:
+  <<: *default
+  post:
+    - cd <%= deploy_to %>/current && chef-solo -c <%= deploy_to %>/current/config/solo.rb -j <%= deploy_to %>/current/nodes/192.168.34.42.json
+batch:
+  <<: *default
+  post:
+    - cd <%= deploy_to %>/current && chef-solo -c <%= deploy_to %>/current/config/solo.rb -j <%= deploy_to %>/current/nodes/192.168.34.42.json

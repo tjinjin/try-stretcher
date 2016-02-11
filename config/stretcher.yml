@@ -1,0 +1,15 @@
+local_working_path_base: /var/tmp/chef
+repo_url: https://github.com/tjinjin/try-stretcher
+branch: revenge_chef
+exclude_dirs:
+  - tmp
+environment: development
+tarball_name: chef.tgz
+deploy_to: /var/tmp/chef
+deploy_roles:
+  - web
+  - batch
+stretcher_path: s3://tjinjin-server-stretcher/assets
+manifest_path: s3://tjinjin-server-stretcher/manifests
+stretcher_hook: stretcher.yml.erb
+consul_host: 192.168.34.42

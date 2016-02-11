@@ -4,14 +4,15 @@
 <% if @environment == 'development' %>
   "node_name": "<%= @node_name %>",
   "bind_addr": "<%= @bind_addr %>",
+  "log_level": "DEBUG",
 <% end %>
   "client_addr": "0.0.0.0",
-  "bootstrap_expect": 3,
+  "bootstrap_expect": 1,
   "start_join": ["<%= @leader_addr %>"],
   "watches": [
     {
       "type": "event",
-      "name": "example_deploy",
+      "name": "deploy_web_development",
       "handler": "stretcher"
     }
   ]
