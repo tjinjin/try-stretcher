@@ -3,13 +3,13 @@ repo_url: https://github.com/tjinjin/try-stretcher
 branch: revenge_chef
 exclude_dirs:
   - tmp
-rails_env: development
-local_tarball_name: chef.tgz
+environment: development
+tarball_name: chef.tgz
 deploy_to: /var/tmp/chef
 deploy_roles:
   - web
   - batch
-stretcher_path: s3://tjinjin-upload-cirlcleci/assets
-manifest_path: s3://tjinjin-upload-cirlcleci/manifests
+stretcher_path: s3://tjinjin-server-stretcher/assets
+manifest_path: s3://tjinjin-server-stretcher/manifests
 stretcher_hook: stretcher.yml.erb
 consul_host: 192.168.34.42
