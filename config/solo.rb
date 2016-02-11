@@ -1,4 +1,4 @@
-base = File.expand_path('..', __FILE__)
+base = File.expand_path('../..', __FILE__)
 
 nodes_path                File.join(base, 'nodes')
 role_path                 File.join(base, 'roles')
