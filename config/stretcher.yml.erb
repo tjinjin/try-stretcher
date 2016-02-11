@@ -10,10 +10,10 @@ web:
   post:
     - rm -f <%= deploy_to %>/current
     - ln -s <%= deploy_to %>/releases/<%= time_now %> <%= deploy_to %>/current
-    - chef-solo -c <%= deploy_to %>/current/try-stretcher/solo.rb -j <%= deploy_to %>/current/try-stretcher/nodes/192.168.34.42.json
+    - chef-solo -c <%= deploy_to %>/current/solo.rb -j <%= deploy_to %>/current/nodes/192.168.34.42.json
 batch:
   <<: *default
   post:
     - rm -f <%= deploy_to %>/current
     - ln -s <%= deploy_to %>/releases/<%= time_now %> <%= deploy_to %>/current
-    - chef-solo -c <%= deploy_to %>/current/try-stretcher/solo.rb -j <%= deploy_to %>/current/try-stretcher/nodes/192.168.34.42.json
+    - chef-solo -c <%= deploy_to %>/current/solo.rb -j <%= deploy_to %>/current/nodes/192.168.34.42.json
