@@ -8,8 +8,12 @@ default: &default
 web:
   <<: *default
   post:
+    - rm -f /var/tmp/chef/current
+    - ls -s /var/tmp/chef/releases/<%= time_now %> current
     - chef-solo -c /var/tmp/current/try-stretcher/solo.rb -j /var/tmp/current/try-stretcher/nodes/192.168.34.42.json
 batch:
   <<: *default
   post:
+    - rm -f /var/tmp/chef/current
+    - ls -s /var/tmp/chef/releases/<%= time_now %> current
     - chef-solo -c /var/tmp/current/try-stretcher/solo.rb -j /var/tmp/current/try-stretcher/nodes/192.168.34.42.json
