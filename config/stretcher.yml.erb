@@ -1,5 +1,8 @@
 default: &default
   pre:
+    - rm -f <%= deploy_to %>/current
+    - ln -s <%= deploy_to %>/releases/<%= time_now %> <%= deploy_to %>/current
+  post:
     -
   success:
     -
@@ -8,12 +11,8 @@ default: &default
 web:
   <<: *default
   post:
-    - rm -f <%= deploy_to %>/current
-    - ln -s <%= deploy_to %>/releases/<%= time_now %> <%= deploy_to %>/current
-    - chef-solo -c <%= deploy_to %>/current/solo.rb -j <%= deploy_to %>/current/nodes/192.168.34.42.json
+    - cd <%= deploy_to %>/current && chef-solo -c <%= deploy_to %>/current/solo.rb -j <%= deploy_to %>/current/nodes/192.168.34.42.json
 batch:
   <<: *default
   post:
-    - rm -f <%= deploy_to %>/current
-    - ln -s <%= deploy_to %>/releases/<%= time_now %> <%= deploy_to %>/current
-    - chef-solo -c <%= deploy_to %>/current/solo.rb -j <%= deploy_to %>/current/nodes/192.168.34.42.json
+    - cd <%= deploy_to %>/current && chef-solo -c <%= deploy_to %>/current/solo.rb -j <%= deploy_to %>/current/nodes/192.168.34.42.json
