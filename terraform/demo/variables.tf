@@ -32,6 +32,20 @@ variable "az_count" {
   default = "2"
 }
 
+variable "bastion_ami" {
+  default = "ami-b80b6db8"
+}
+
+variable "bastion_instance_type" {
+  default = "t2.micro"
+}
+
+variable "key_name" {
+
+}
+
+##
+#
 ## blue-green
 variable "blue_ami" {
   default = "ami-b80b6db8"
