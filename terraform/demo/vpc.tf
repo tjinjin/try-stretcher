@@ -23,7 +23,7 @@ resource "aws_subnet" "private" {
     count = "${var.az_count}"
     cidr_block = "${lookup(var.private_subnets, count.index)}"
     availability_zone = "${lookup(var.availability_zones, count.index)}"
-    map_public_ip_on_launch = true
+    map_public_ip_on_launch = false
     tags {
         Name = "demo"
         Created = "terraform"
