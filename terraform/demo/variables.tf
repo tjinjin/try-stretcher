@@ -1,4 +1,8 @@
-## common settings
+# common settings
+variable "region" {
+  default = "ap-northeast-1"
+}
+
 variable "vpc_cidr" {
   default = "10.0.0.0/16"
 }
@@ -26,4 +30,24 @@ variable "availability_zones" {
 
 variable "az_count" {
   default = "2"
+}
+
+## blue-green
+variable "blue_ami" {
+  default = "ami-b80b6db8"
+}
+variable "green_ami" {
+  default = "ami-b80b6db8"
+}
+variable "blue_instance_type" {
+  default = "t2.micro"
+}
+variable "green_instance_type" {
+  default = "t2.micro"
+}
+variable "blue_instances" {
+  default = "0"
+}
+variable "green_instances" {
+  default = "0"
 }
