@@ -5,11 +5,11 @@ key_name = "tjinjin-terraform"
 
 ## green settings
 green_ami    = "ami-b80b6db8"
-green_instance_type = "t2.nano"
+green_instance_type = "t2.micro"
 
 ## blue settings
 blue_ami    = "ami-b80b6db8"
-blue_instance_type = "t2.nano"
+blue_instance_type = "t2.micro"
 
 ## blue-green
 blue_instances  = "2"
