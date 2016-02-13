@@ -2,7 +2,6 @@ resource "aws_security_group" "bastion" {
     name = "bastion"
     description = "bastion sg"
     vpc_id = "${aws_vpc.demo.id}"
-
     ingress {
         from_port = 0
         to_port = 65535
@@ -35,7 +34,7 @@ resource "aws_security_group" "private_instances" {
     description = "belong to private ec2 instances"
     vpc_id = "${aws_vpc.demo.id}"
 
-    ingress {
+   ingress {
         from_port = 0
         to_port = 65535
         protocol = "tcp"
