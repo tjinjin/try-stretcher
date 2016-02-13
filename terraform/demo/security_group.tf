@@ -62,3 +62,31 @@ resource "aws_security_group" "private_instances" {
         Created = "terraform"
     }
 }
+
+resource "aws_security_group" "elb" {
+    name = "allow http/https"
+    description = "Used in the terraform"
+    vpc_id = "${aws_vpc.demo.id}"
+    ingress {
+        from_port = 80
+        to_port = 80
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    ingress {
+        from_port = 443
+        to_port = 443
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    egress {
+      from_port = 0
+      to_port = 0
+      protocol = "-1"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+    tags {
+        Name = "demo"
+        Created = "terraform"
+    }
+}
