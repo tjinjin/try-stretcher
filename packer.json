@@ -1,16 +1,15 @@
 {
   "builders": [{
-    "type": "amazon-instance",
+    "type": "amazon-ebs",
     "region": "ap-northeast-1",
     "source_ami": "ami-b80b6db8",
-    "instance_type": "t1.micro",
+    "instance_type": "t2.micro",
     "ssh_username": "centos",
     "ssh_timeout": "5m",
     "ami_name": "packer-example {{timestamp}}"
   }],
  "provisioners": [{
     "type": "chef-solo",
-    "install_command": "curl -L https://www.opscode.com/chef/install.sh | {{if .Sudo}}sudo{{end}} bash -s -- -v {{user `chef_version`}}",
     "cookbook_paths": ["./site-cookbooks"],
     "run_list": ["stretcher", "consul", "awscli"],
     "prevent_sudo": false,
