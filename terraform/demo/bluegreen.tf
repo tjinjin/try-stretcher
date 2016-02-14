@@ -5,11 +5,14 @@ resource "aws_launch_configuration" "blue" {
     iam_instance_profile = "${var.project_name}-instance"
     key_name = "${var.key_name}"
     security_groups = ["${aws_security_group.private_instances.id}"]
-    user_data = "${file("./boot-blue.sh")}"
 
     root_block_device {
         delete_on_termination = true
     }
+
+#    lifecycle = {
+#        create_before_destroy = true
+#    }
 }
 
 resource "aws_autoscaling_group" "blue" {
@@ -29,11 +32,14 @@ resource "aws_launch_configuration" "green" {
     iam_instance_profile = "${var.project_name}-instance"
     key_name = "${var.key_name}"
     security_groups = ["${aws_security_group.private_instances.id}"]
-    user_data = "${file("./boot-green.sh")}"
 
     root_block_device {
       delete_on_termination = true
     }
+
+#    lifecycle = {
+#        create_before_destroy = true
+#    }
 }
 
 resource "aws_autoscaling_group" "green" {
