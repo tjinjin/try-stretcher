@@ -23,18 +23,7 @@ resource "aws_autoscaling_group" "blue" {
     vpc_zone_identifier = ["${aws_subnet.private.*.id}"]
     load_balancers = ["${aws_elb.blue.id}"]
     max_size = "${var.blue_instances}"
-    provisioner "remote-exec" {
-        inline = [
-            "consul join ${aws_instance.bastion.private_ip}"
-        ]
-        connection {
-          bastion_host = "${aws_instance.bastion.public_ip}"
-          user = "centos"
-          private_key = "~/.ssh/tjinjin-terraform.pem"
-        }
-    }
-
-   min_size = "${var.blue_instances}"
+    min_size = "${var.blue_instances}"
 }
 
 resource "aws_launch_configuration" "green" {
@@ -62,18 +51,7 @@ resource "aws_autoscaling_group" "green" {
     vpc_zone_identifier = ["${aws_subnet.private.*.id}"]
     load_balancers = ["${aws_elb.blue.id}"]
     max_size = "${var.green_instances}"
-    provisioner "remote-exec" {
-        inline = [
-            "consul join ${aws_instance.bastion.private_ip}"
-        ]
-        connection {
-          bastion_host = "${aws_instance.bastion.publig_ip}"
-          user = "centos"
-          private_key = "~/.ssh/tjinjin-terraform.pem"
-        }
-    }
-
-   min_size = "${var.green_instances}"
+    min_size = "${var.green_instances}"
 }
 
 output "elb_dns_name" {
