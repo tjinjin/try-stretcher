@@ -6,12 +6,25 @@
     "instance_type": "t2.micro",
     "ssh_username": "centos",
     "ssh_timeout": "5m",
-    "ami_name": "packer-example {{timestamp}}"
+    "ami_name": "consul-web {{timestamp}}"
   }],
  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sudo yum -y update"
+    ]},
+    {
     "type": "chef-solo",
     "cookbook_paths": ["./site-cookbooks"],
     "run_list": ["stretcher", "consul", "awscli"],
+    "json": {
+      "consul": {
+        "mode": "server",
+        "deploy": {
+          "role": "web"
+        }
+      }
+    },
     "prevent_sudo": false,
     "skip_install": false
   }]
