@@ -2,6 +2,7 @@ resource "aws_launch_configuration" "blue" {
     image_id = "${var.blue_ami}"
     name = "blue-launch_configration"
     instance_type = "${var.blue_instance_type}"
+    iam_instance_profile = "${var.project_name}-instance"
     key_name = "${var.key_name}"
     security_groups = ["${aws_security_group.private_instances.id}"]
     user_data = "${file("./boot-blue.sh")}"
@@ -25,6 +26,7 @@ resource "aws_launch_configuration" "green" {
     image_id = "${var.green_ami}"
     name = "green-launch_configration"
     instance_type = "${var.green_instance_type}"
+    iam_instance_profile = "${var.project_name}-instance"
     key_name = "${var.key_name}"
     security_groups = ["${aws_security_group.private_instances.id}"]
     user_data = "${file("./boot-green.sh")}"
