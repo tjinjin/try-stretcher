@@ -5,7 +5,7 @@ template '/etc/consul.d/server.json' do
     bind_addr: node['consul']['ipaddress'],
     node_name: node['consul']['ipaddress'],
     environment: node['environment'],
-    consul_role: node['consul']['role'],
+    consul_deploy_role: node['consul']['deploy']['role'],
     consul_mode: node['consul']['mode']
   )
   notifies :start, 'service[consul]'

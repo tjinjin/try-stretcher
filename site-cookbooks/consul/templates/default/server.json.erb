@@ -1,17 +1,19 @@
 {
-  "server": <%= @consul_mode %>,
+<% if @consul_mode == 'server' %>
+  "server": true,
+  "client_addr": "0.0.0.0",
+  "bootstrap_expect": 3,
+<% end %>
   "data_dir": "/tmp/consul",
 <% if @environment == 'development' %>
   "node_name": "<%= @node_name %>",
   "bind_addr": "<%= @bind_addr %>",
   "log_level": "DEBUG",
 <% end %>
-  "client_addr": "0.0.0.0",
-  "bootstrap_expect": 3,
   "watches": [
     {
       "type": "event",
-      "name": "deploy_<%= @consul_role %>_development",
+      "name": "deploy_<%= @consul_deploy_role %>_development",
       "handler": "stretcher"
     }
   ]
