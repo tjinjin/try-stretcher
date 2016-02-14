@@ -11,4 +11,4 @@ include_recipe 'stretcher'
 
 include_recipe 'consul::install'
 include_recipe 'consul::setting'
-include_recipe 'consul::watch'
+#include_recipe 'consul::watch'

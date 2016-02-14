@@ -6,6 +6,7 @@ After=network-online.target
 [Service]
 EnvironmentFile=-/etc/sysconfig/consul
 Environment=GOMAXPROCS=2
+Environment=AWS_DEFAULT_REGION=ap-northeast-1
 Restart=on-failure
 ExecStart=/usr/local/bin/consul agent $OPTIONS -config-dir /etc/consul.d
 ExecReload=/bin/kill -HUP $MAINPID

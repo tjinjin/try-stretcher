@@ -29,3 +29,11 @@ execute 'deploy binary' do
   EOC
   not_if { File.exist?("#{deploy_path}/#{binary_file}") }
 end
+
+%w(
+  /var/tmp/chef
+  /var/tmp/chef/current
+  /var/tmp/chef/releases
+).each do |dir|
+  directory dir
+end

@@ -30,6 +30,5 @@ execute 'systemd-daemon-reload' do
 end
 
 service 'consul' do
-  action [:enable]
-  supports start: true, reload: true
+  supports start: true, restart: true
 end

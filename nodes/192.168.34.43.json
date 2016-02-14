@@ -1,7 +1,11 @@
 {
   "environment": "development",
   "consul": {
-    "ipaddress": "192.168.34.43"
+    "ipaddress": "192.168.34.43",
+    "mode": "client",
+    "deploy": {
+      "role": "batch"
+    }
   },
 
   "run_list": [
