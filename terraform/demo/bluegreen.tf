@@ -1,3 +1,11 @@
+resource "template_file" "user_data" {
+    template = "${file("./boot-consul.sh.tpl")}"
+
+    vars {
+        bastion_private_ip = "${aws_instance.bastion.private_ip}"
+    }
+}
+
 resource "aws_launch_configuration" "blue" {
     image_id = "${var.blue_ami}"
     name = "blue-launch_configration"
@@ -5,7 +13,7 @@ resource "aws_launch_configuration" "blue" {
     iam_instance_profile = "${var.project_name}-instance"
     key_name = "${var.key_name}"
     security_groups = ["${aws_security_group.private_instances.id}"]
-    user_data = "${file("./boot-consul.sh")}"
+    user_data = "${template_file.user_data.rendered}"
 
     root_block_device {
         delete_on_termination = true
@@ -33,7 +41,7 @@ resource "aws_launch_configuration" "green" {
     iam_instance_profile = "${var.project_name}-instance"
     key_name = "${var.key_name}"
     security_groups = ["${aws_security_group.private_instances.id}"]
-    user_data = "${file("./boot-consul.sh")}"
+    user_data = "${template_file.user_data.rendered}"
 
     root_block_device {
       delete_on_termination = true
@@ -57,5 +65,3 @@ resource "aws_autoscaling_group" "green" {
 output "elb_dns_name" {
   value = "${aws_elb.blue.dns_name}"
 }
-
-output "aws"
