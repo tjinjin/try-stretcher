@@ -1,6 +1,6 @@
 local_working_path_base: /var/tmp/chef
 repo_url: https://github.com/tjinjin/try-stretcher
-branch: revenge_chef
+branch: master
 exclude_dirs:
   - tmp
 environment: development
