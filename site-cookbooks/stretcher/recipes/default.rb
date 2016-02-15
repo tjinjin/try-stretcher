@@ -32,7 +32,6 @@ end
 
 %w(
   /var/tmp/chef
-  /var/tmp/chef/current
   /var/tmp/chef/releases
 ).each do |dir|
   directory dir

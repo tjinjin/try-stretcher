@@ -9,7 +9,7 @@
 
 execute 'change-timezone' do
   command <<-EOC
-    sudo timedatectl set-timezone Asia/Tokyo
+    timedatectl set-timezone Asia/Tokyo
   EOC
   not_if "timedatectl | grep JST"
 end
