@@ -9,11 +9,16 @@
 #
 # site-cookbooks/ruby2/recipes/default.rb
 #
+package 'libyaml'
 
-%w{readline ncurses gdbm glibc openssl libyaml libffi zlib readline-devel ncurses-devel gdbm-devel glibc-devel gcc openssl-devel make libyaml-devel libffi-devel zlib-devel patch ruby-devel}.each do |pkg|
- package pkg do
- action :install
- end
+ruby_rpm_path = '/var/tmp/ruby-2.2.3-1.el7.centos.x86_64.rpm'
+
+remote_file ruby_rpm_path do
+   source 'https://github.com/feedforce/ruby-rpm/releases/download/2.2.3/ruby-2.2.3-1.el7.centos.x86_64.rpm'
+end
+
+rpm_package 'ruby' do
+  source ruby_rpm_path
 end
 
 gem_package 'bundler'
