@@ -7,7 +7,6 @@
         "recipe[consul]",
         "recipe[dev-util]",
         "recipe[stretcher]",
-        "recipe[timezone]",
         "recipe[chrony]"
     ],
 
