@@ -4,6 +4,10 @@ resource "template_file" "user_data" {
     vars {
         bastion_private_ip = "${aws_instance.bastion.private_ip}"
     }
+
+    lifecycle = {
+        create_before_destroy = true
+    }
 }
 
 resource "aws_launch_configuration" "blue" {
@@ -32,6 +36,10 @@ resource "aws_autoscaling_group" "blue" {
     load_balancers = ["${aws_elb.blue.id}"]
     max_size = "${var.blue_instances}"
     min_size = "${var.blue_instances}"
+
+    lifecycle = {
+        create_before_destroy = true
+    }
 }
 
 resource "aws_launch_configuration" "green" {
@@ -57,9 +65,13 @@ resource "aws_autoscaling_group" "green" {
     launch_configuration = "${aws_launch_configuration.green.id}"
     availability_zones = ["ap-northeast-1a", "ap-northeast-1c"]
     vpc_zone_identifier = ["${aws_subnet.private.*.id}"]
-    load_balancers = ["${aws_elb.blue.id}"]
+    load_balancers = ["${aws_elb.green.id}"]
     max_size = "${var.green_instances}"
     min_size = "${var.green_instances}"
+
+    lifecycle = {
+        create_before_destroy = true
+    }
 }
 
 output "elb_dns_name" {
