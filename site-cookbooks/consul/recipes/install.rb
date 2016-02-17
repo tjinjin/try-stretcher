@@ -33,6 +33,6 @@ service 'consul' do
   supports start: true, restart: true
 end
 
-%w(/var/consul /var/consul/data).each do |dir|
+%w(/var/consul /etc/consul.d /var/consul/data).each do |dir|
   directory dir
 end

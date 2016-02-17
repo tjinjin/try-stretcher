@@ -10,7 +10,7 @@ include_recipe 'unzip'
 include_recipe 'stretcher'
 
 include_recipe 'consul::install'
-if node['consul']['role'] == 'bastion'
+if node['consul']['deploy']['role'] == 'bastion'
   include_recipe 'consul::setting'
   include_recipe 'consul::webui'
   #include_recipe 'consul::watch'
