@@ -12,7 +12,7 @@ web:
   <<: *default
   post:
     - cd <%= deploy_to %>/current && chef-solo -c <%= deploy_to %>/current/config/solo.rb -j <%= deploy_to %>/current/nodes/192.168.34.42.json
-batch:
+bastion:
   <<: *default
   post:
     - cd <%= deploy_to %>/current && chef-solo -c <%= deploy_to %>/current/config/solo.rb -j <%= deploy_to %>/current/nodes/192.168.34.42.json
