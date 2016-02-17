@@ -1,0 +1,15 @@
+{
+  "environment": "development",
+  "consul": {
+    "ipaddress": "192.168.34.42",
+    "deploy": {
+      "role": "bastion"
+    }
+  },
+
+  "run_list": [
+    "role[base]",
+    "role[rails]",
+    "role[stretcher]"
+  ]
+}
