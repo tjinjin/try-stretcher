@@ -10,5 +10,7 @@ include_recipe 'unzip'
 include_recipe 'stretcher'
 
 include_recipe 'consul::install'
-include_recipe 'consul::setting'
-#include_recipe 'consul::watch'
+if node['consul']['role'] == 'bastion'
+  include_recipe 'consul::setting'
+  #include_recipe 'consul::watch'
+end
