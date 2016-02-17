@@ -1,4 +1,4 @@
-pkg_version = '0.6.0'
+pkg_version = '0.6.3'
 work_path = '/tmp'
 archive_file = "consul_#{pkg_version}_linux_amd64.zip"
 binary_file = 'consul'
