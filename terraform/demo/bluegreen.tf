@@ -73,7 +73,3 @@ resource "aws_autoscaling_group" "green" {
         create_before_destroy = true
     }
 }
-
-output "elb_dns_name" {
-  value = "${aws_elb.blue.dns_name}"
-}

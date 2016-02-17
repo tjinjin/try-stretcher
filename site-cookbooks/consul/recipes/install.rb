@@ -1,4 +1,4 @@
-pkg_version = '0.6.0'
+pkg_version = '0.6.3'
 work_path = '/tmp'
 archive_file = "consul_#{pkg_version}_linux_amd64.zip"
 binary_file = 'consul'
@@ -31,4 +31,8 @@ end
 
 service 'consul' do
   supports start: true, restart: true
+end
+
+%w(/var/consul /etc/consul.d /var/consul/data).each do |dir|
+  directory dir
 end

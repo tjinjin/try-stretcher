@@ -5,9 +5,9 @@ default: &default
   post:
     -
   success:
-    -
+    - cat >> /tmp/chef_success
   failure:
-    - cat >> /tmp/failure
+    - cat >> /tmp/chef_failure
 web:
   <<: *default
   post:

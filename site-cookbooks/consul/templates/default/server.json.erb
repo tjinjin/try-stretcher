@@ -4,11 +4,12 @@
   "client_addr": "0.0.0.0",
   "bootstrap_expect": 3,
 <% end %>
-  "data_dir": "/tmp/consul",
+  "data_dir": "/var/consul/data",
 <% if @environment == 'development' %>
   "node_name": "<%= @node_name %>",
   "bind_addr": "<%= @bind_addr %>",
   "log_level": "DEBUG",
+  "ui_dir": "/var/consul/web_ui",
 <% end %>
   "watches": [
     {

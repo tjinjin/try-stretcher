@@ -8,7 +8,7 @@ tarball_name: chef.tgz
 deploy_to: /var/tmp/chef
 deploy_roles:
   - web
-  - batch
+  - bastion
 stretcher_path: s3://tjinjin-server-stretcher/assets
 manifest_path: s3://tjinjin-server-stretcher/manifests
 stretcher_hook: stretcher.yml.erb

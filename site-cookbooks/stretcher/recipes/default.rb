@@ -8,7 +8,7 @@
 #
 include_recipe 'unzip'
 
-pkg_version = '0.3.0'
+pkg_version = '0.4.1'
 work_path = '/tmp'
 archive_file = "stretcher-v#{pkg_version}-linux-amd64.zip"
 tmp_file = File.basename("#{archive_file}", '.zip')

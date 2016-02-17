@@ -1,4 +1,3 @@
-directory '/etc/consul.d'
 
 template '/etc/consul.d/server.json' do
   variables(
