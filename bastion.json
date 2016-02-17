@@ -6,7 +6,7 @@
     "instance_type": "t2.micro",
     "ssh_username": "centos",
     "ssh_timeout": "5m",
-    "ami_name": "consul-web {{timestamp}}"
+    "ami_name": "consul-bastion {{timestamp}}"
   }],
  "provisioners": [{
     "type": "shell",
