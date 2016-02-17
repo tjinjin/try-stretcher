@@ -16,6 +16,6 @@ resource "aws_instance" "bastion" {
     }
 }
 
-output "bastion_dns_name" {
-    value = "${aws_instance.bastion.dns_name}"
+output "bastion_ip" {
+    value = "${aws_instance.bastion.public_ip}"
 }

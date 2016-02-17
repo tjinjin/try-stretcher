@@ -32,7 +32,7 @@ resource "aws_elb" "blue" {
 }
 
 resource "aws_elb" "green" {
-    name = "blue-load-balancer"
+    name = "green-load-balancer"
     subnets = ["${aws_subnet.public.*.id}"]
     security_groups = ["${aws_security_group.elb.id}"]
     cross_zone_load_balancing = true
