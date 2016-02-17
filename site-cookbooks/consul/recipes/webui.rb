@@ -10,6 +10,7 @@ end
 remote_file "#{deploy_path}/#{archive_file}" do
   source "https://releases.hashicorp.com/consul/#{pkg_version}/#{archive_file}"
   not_if { File.exist?("#{deploy_path}/#{archive_file}") }
+  notifies :run, 'execute[deploy files]'
 end
 
 execute 'deploy files' do
@@ -17,4 +18,5 @@ execute 'deploy files' do
     cd #{deploy_path}
     unzip #{archive_file}
   EOC
+  action :nothing
 end
