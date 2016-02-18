@@ -1,0 +1,9 @@
+{
+  "environment": "development",
+
+  "run_list": [
+    "role[base]",
+    "role[rails]",
+    "role[stretcher]"
+  ]
+}
