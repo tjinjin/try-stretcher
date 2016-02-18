@@ -1,0 +1,11 @@
+[Unit]
+Description=consul-kv-dashboard
+Requires=consul.service
+
+[Service]
+Restart=on-failure
+ExecStart=/usr/local/bin/consul-kv-dashboard
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
