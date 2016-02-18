@@ -5,9 +5,11 @@ default: &default
   post:
     -
   success:
-    - cat >> /tmp/chef_success
+    - echo 'deploy success!!' > /tmp/chef_success
+    - <%= deploy_to %>/current/script/register_kv.sh 0 /tmp/chef_success
   failure:
-    - cat >> /tmp/chef_failure
+    - cat > /tmp/chef_failure
+    - <%= deploy_to %>/current/script/register_kv.sh 2 /tmp/chef_failure
 web:
   <<: *default
   post:
