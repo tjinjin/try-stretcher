@@ -2,7 +2,9 @@
   "environment": "development",
   "consul": {
     "ipaddress": "192.168.34.42",
-    "role": "bastion"
+    "deploy":{
+      "role": "bastion"
+    }
   },
 
   "run_list": [
