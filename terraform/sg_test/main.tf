@@ -14,6 +14,8 @@ resource "aws_instance" "test" {
         Name = "test"
         Project = "test"
     }
+#    lifecycle { "ignore_changes" = ["security_groups"]}
+#    lifecycle { "prevent_destroy" = true }
 }
 
 resource "aws_security_group" "test" {
