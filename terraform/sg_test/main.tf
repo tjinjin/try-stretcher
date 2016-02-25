@@ -4,7 +4,8 @@ resource "aws_instance" "test" {
     key_name = "${var.key_name}"
 
     # Our Security group to allow HTTP and SSH access
-    security_groups = ["${aws_security_group.test.name}"]
+#    security_groups = ["${aws_security_group.test.name}"]
+    vpc_security_group_ids = ["${aws_security_group.add-test.id}","${aws_security_group.test.id}"]
 
     root_block_device {
         delete_on_termination = "true"
