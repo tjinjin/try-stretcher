@@ -1,9 +1,9 @@
 {
-  "environment": "development",
+  "environment": "vm",
   "consul": {
     "ipaddress": "192.168.34.42",
     "deploy":{
-      "role": "bastion"
+      "role": "web"
     }
   },
 
