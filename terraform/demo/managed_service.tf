@@ -61,10 +61,6 @@ resource "aws_route53_record" "deploy-test" {
     zone_id = "${aws_route53_zone.primary.zone_id}"
     name = "deploy-test.tjinjin.net"
     type = "A"
-
-    alias {
-        name = "${aws_elb.common.dns_name}"
-        zone_id = "${aws_elb.common.zone_id}"
-        evaluate_target_health = false
-    }
+    ttl = "300"
+    records = ["${aws_instance.bastion.public_ip}"]
 }
