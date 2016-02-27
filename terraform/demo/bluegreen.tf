@@ -33,7 +33,7 @@ resource "aws_autoscaling_group" "blue" {
     launch_configuration = "${aws_launch_configuration.blue.id}"
     availability_zones = ["ap-northeast-1a", "ap-northeast-1c"]
     vpc_zone_identifier = ["${aws_subnet.private.*.id}"]
-    load_balancers = ["${aws_elb.blue.id}"]
+    load_balancers = ["${aws_elb.common.id}"]
     max_size = "${var.blue_instances}"
     min_size = "${var.blue_instances}"
 
@@ -65,7 +65,7 @@ resource "aws_autoscaling_group" "green" {
     launch_configuration = "${aws_launch_configuration.green.id}"
     availability_zones = ["ap-northeast-1a", "ap-northeast-1c"]
     vpc_zone_identifier = ["${aws_subnet.private.*.id}"]
-    load_balancers = ["${aws_elb.green.id}"]
+    load_balancers = ["${aws_elb.common.id}"]
     max_size = "${var.green_instances}"
     min_size = "${var.green_instances}"
 
