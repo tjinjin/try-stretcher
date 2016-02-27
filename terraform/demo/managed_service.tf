@@ -52,3 +52,15 @@ resource "aws_elb" "common" {
         Created = "terraform"
     }
 }
+
+resource "aws_route53_zone" "primary" {
+   name = "tjinjin.net"
+}
+
+resource "aws_route53_record" "deploy-test" {
+    zone_id = "${aws_route53_zone.primary.zone_id}"
+    name = "deploy-test.tjinjin.net"
+    type = "A"
+    ttl = "300"
+    records = ["${aws_instance.bastion.public_ip}"]
+}
