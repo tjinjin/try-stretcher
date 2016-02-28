@@ -2,11 +2,12 @@
 <% if @consul_mode == 'server' %>
   "server": true,
   "client_addr": "0.0.0.0",
+<% end %>
+<% if @consul_deploy_role == 'bastion' %>
   "bootstrap_expect": 3,
+  "ui_dir": "/var/consul/web_ui",
 <% end %>
   "data_dir": "/var/consul/data",
-  "ui": true,
-  "ui_dir": "/var/consul/web_ui",
   "rejoin_after_leave": true,
 <% if @environment == 'vm' %>
   "node_name": "<%= @node_name %>",

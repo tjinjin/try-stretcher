@@ -23,8 +23,8 @@ resource "aws_instance" "nat" {
     }
 }
 
-resource "aws_elb" "blue" {
-    name = "blue-load-balancer"
+resource "aws_elb" "common" {
+    name = "common-load-balancer"
     subnets = ["${aws_subnet.public.*.id}"]
     security_groups = ["${aws_security_group.elb.id}"]
     cross_zone_load_balancing = true
@@ -53,26 +53,27 @@ resource "aws_elb" "blue" {
     }
 }
 
-resource "aws_elb" "green" {
-    name = "green-load-balancer"
-    subnets = ["${aws_subnet.public.*.id}"]
-    security_groups = ["${aws_security_group.elb.id}"]
-    cross_zone_load_balancing = true
-    listener {
-        instance_port = 8080
-        instance_protocol = "http"
-        lb_port = 8080
-        lb_protocol = "http"
+resource "aws_route53_zone" "primary" {
+   name = "tjinjin.net"
+}
+
+resource "aws_route53_record" "deploy-test" {
+    zone_id = "${aws_route53_zone.primary.zone_id}"
+    name = "deploy-test.tjinjin.net"
+    type = "A"
+    ttl = "300"
+    records = ["${aws_instance.bastion.public_ip}"]
+}
+
+resource "aws_route53_record" "deploy-web" {
+    zone_id = "${aws_route53_zone.primary.zone_id}"
+    name = "deploy-web.tjinjin.net"
+    type = "A"
+
+    alias {
+        name = "${aws_elb.common.dns_name}"
+        zone_id = "${aws_elb.common.zone_id}"
+        evaluate_target_health = false
     }
-    health_check {
-        healthy_threshold = 2
-        unhealthy_threshold = 2
-        timeout = 2
-        target = "HTTP:8080/"
-        interval = 5
-    }
-    tags {
-        Name = "demo"
-        Created = "terraform"
-    }
+
 }
