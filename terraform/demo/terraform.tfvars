@@ -17,4 +17,4 @@ blue_instance_type = "t2.micro"
 
 ## blue-green
 blue_instances  = "2"
-green_instances = "2"
+green_instances = "0"
