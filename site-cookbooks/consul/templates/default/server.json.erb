@@ -20,5 +20,12 @@
       "name": "deploy_<%= @consul_deploy_role %>_development",
       "handler": "stretcher"
     }
+<% if @consul_deploy_role == 'bastion' %>
+    ,
+    {
+      "type": "nodes",
+      "handler": "/opt/test/deploy.sh"
+    }
+<% end %>
   ]
 }

@@ -19,3 +19,16 @@ cat << EOF >/etc/consul.d/server.json
 EOF
 
 systemctl start consul
+
+
+###
+#
+# deploy tasks
+#
+###
+# for stretcher
+export AWS_DEFAULT_REGION=ap-northeast-1
+# chef
+echo 's3://tjinjin-server-stretcher/manifests/manifest_web_development.yml' | stretcher
+# rails
+echo 's3://tjinjin-server-stretcher/manifests/manifest_web_development.yml' | stretcher
