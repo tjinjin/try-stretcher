@@ -5,24 +5,40 @@ require 'rspec/core/rake_task'
 task :spec    => 'spec:all'
 task :default => :spec
 
-namespace :spec do
-  targets = []
-  Dir.glob('./spec/*').each do |dir|
-    next unless File.directory?(dir)
-    target = File.basename(dir)
-    target = "_#{target}" if target == "default"
-    targets << target
+roles = [
+  {
+    name: 'development-web-server',
+    short_name: 'dev:web',
+    role: 'dev_web'
+  },
+  {
+    name: 'development-batch-server',
+    short_name: 'dev:batch',
+    role: 'dev_batch'
+  }
+]
+
+class ServerspecTask < RSpec::Core::RakeTask
+  attr_accessor :target
+
+  def spec_command
+    cmd = super
+    "#{cmd}"
   end
+end
 
-  task :all     => targets
-  task :default => :all
-
-  targets.each do |target|
-    original_target = target == "_default" ? target[1..-1] : target
-    desc "Run serverspec tests to #{original_target}"
-    RSpec::Core::RakeTask.new(target.to_sym) do |t|
-      ENV['TARGET_HOST'] = original_target
-      t.pattern = "spec/#{original_target}/*_spec.rb"
+namespace :spec do
+  desc "Run serverspec to all hosts"
+  task :all => roles.map {|h| 'spec:' + h[:short_name] }
+  roles.each do |role|
+    desc "Run serverspec to #{role[:name]}"
+    ServerspecTask.new(role[:short_name].to_sym) do |t|
+      t.target = 'localhost'
+      t.pattern = "spec/roles/#{role[:role]}_spec.rb"
     end
   end
+end
+
+Dir['tasks/*.rake'].each do |f|
+  load File.join(File.dirname(__FILE__), f)
 end
