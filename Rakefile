@@ -18,18 +18,39 @@ roles = [
   }
 ]
 
+hosts = [
+  {
+    name: '192.168.34.42',
+    short_name: 'vm:app01',
+    role: 'vm_web'
+  },
+  {
+    name: '192.168.34.43',
+    short_name: 'vm:app02',
+    role: 'vm_web'
+  }
+]
+
 class ServerspecTask < RSpec::Core::RakeTask
   attr_accessor :target
 
   def spec_command
     cmd = super
-    "#{cmd}"
+    "env TARGET_HOST=#{target} #{cmd}"
   end
 end
 
 namespace :spec do
   desc "Run serverspec to all hosts"
-  task :all => roles.map {|h| 'spec:' + h[:short_name] }
+  hosts.each do |host|
+    desc "Run serverspec to #{host[:name]}"
+    ServerspecTask.new(host[:short_name].to_sym) do |t|
+      t.target = host[:name]
+      t.pattern = "spec/roles/#{host[:role]}_spec.rb"
+    end
+  end
+
+  desc "Run serverspec to roles"
   roles.each do |role|
     desc "Run serverspec to #{role[:name]}"
     ServerspecTask.new(role[:short_name].to_sym) do |t|
