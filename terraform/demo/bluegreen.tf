@@ -1,5 +1,5 @@
-resource "template_file" "user_data" {
-    template = "${file("./boot-consul.sh.tpl")}"
+resource "template_file" "boot_web" {
+    template = "${file("./boot-web.sh.tpl")}"
 
     vars {
         bastion_private_ip = "${aws_instance.bastion.private_ip}"
@@ -17,7 +17,7 @@ resource "aws_launch_configuration" "blue" {
     iam_instance_profile = "${var.project_name}-instance"
     key_name = "${var.key_name}"
     security_groups = ["${aws_security_group.private_instances.id}"]
-    user_data = "${template_file.user_data.rendered}"
+    user_data = "${template_file.boot_web.rendered}"
 
     root_block_device {
         delete_on_termination = true
@@ -49,7 +49,7 @@ resource "aws_launch_configuration" "green" {
     iam_instance_profile = "${var.project_name}-instance"
     key_name = "${var.key_name}"
     security_groups = ["${aws_security_group.private_instances.id}"]
-    user_data = "${template_file.user_data.rendered}"
+    user_data = "${template_file.boot_web.rendered}"
 
     root_block_device {
       delete_on_termination = true
