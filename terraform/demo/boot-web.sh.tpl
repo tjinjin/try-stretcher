@@ -29,6 +29,6 @@ systemctl start consul
 # for stretcher
 export AWS_DEFAULT_REGION=ap-northeast-1
 # chef
-echo 's3://tjinjin-upload-cirlcleci/manifests/manifest_web_development.yml' | stretcher
+echo 's3://tjinjin-server-stretcher/manifests/manifest_web_development.yml' | stretcher
 # rails
 echo 's3://tjinjin-upload-cirlcleci/manifests/manifest_web_development.yml' | stretcher
