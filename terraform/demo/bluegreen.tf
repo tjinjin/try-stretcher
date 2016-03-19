@@ -40,6 +40,16 @@ resource "aws_autoscaling_group" "blue" {
     lifecycle = {
         create_before_destroy = true
     }
+    tag {
+      key = "Role"
+      value = "web"
+      propagate_at_launch = true
+    }
+    tag {
+      key = "Color"
+      value = "green"
+      propagate_at_launch = true
+    }
 }
 
 resource "aws_launch_configuration" "green" {
@@ -71,5 +81,15 @@ resource "aws_autoscaling_group" "green" {
 
     lifecycle = {
         create_before_destroy = true
+    }
+    tag {
+      key = "Role"
+      value = "web"
+      propagate_at_launch = true
+    }
+    tag {
+      key = "Color"
+      value = "green"
+      propagate_at_launch = true
     }
 }
