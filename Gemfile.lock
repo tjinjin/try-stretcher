@@ -207,6 +207,7 @@ DEPENDENCIES
   berkshelf
   knife-solo
   rake-stretcher-chef
+  serverspec
 
 BUNDLED WITH
    1.11.2
